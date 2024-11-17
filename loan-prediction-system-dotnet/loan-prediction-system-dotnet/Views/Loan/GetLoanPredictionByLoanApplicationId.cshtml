@@ -1,0 +1,45 @@
+﻿@model LoanPredictionModel
+
+@{
+    ViewData["Title"] = "Loan Prediction Details";
+}
+
+<div class="container my-5">
+    <h2 class="text-center mb-4">Loan Prediction Details</h2>
+
+    <div class="card mb-4">
+        <div class="card-header bg-primary text-white">
+            Prediction Summary
+        </div>
+        <div class="card-body">
+            <p><strong>Loan Status:</strong> @Model.LoanStatus</p>
+            <p><strong>Message:</strong> @Model.Message</p>
+        </div>
+    </div>
+
+    @if (Model.Charts.Any())
+    {
+        <h3 class="mb-3">Prediction Insights</h3>
+        <div class="row">
+            @foreach (var chart in Model.Charts)
+            {
+                <div class="col-md-6 mb-4">
+                    <div class="card">
+                        <div class="card-header">
+                            @chart.Key
+                        </div>
+                        <div class="card-body text-center">
+                            <img src="data:image/png;base64,@chart.Value" class="img-fluid" alt="@chart.Key">
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+    else
+    {
+        <div class="alert alert-info text-center">
+            <p>No insights available for this loan application.</p>
+        </div>
+    }
+</div>

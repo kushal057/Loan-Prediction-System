@@ -1,0 +1,63 @@
+﻿@model IEnumerable<loan_prediction_system_dotnet.Models.LoanApplicationModel>
+@using Microsoft.AspNetCore.Identity
+
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+@{
+    ViewData["Title"] = "My Loan Applications";
+}
+
+<div class="container my-5">
+    <div class="d-flex justify-content-between">
+        <div>
+            <h2 class="text-center mb-4">My Loan Applications</h2>
+        </div>
+        <div>
+            <a class="btn btn-success" href="/Loan/CreateLoanApplication?@UserManager.GetUserId(User)">Create Loan Application <span class="text-xl-end">+</span></a>
+        </div>
+    </div>
+
+    <table class="table table-bordered table-striped">
+        <thead class="table-dark">
+            <tr>
+                <th>Loan ID</th>
+                <th>Gender</th>
+                <th>Marital Status</th>
+                <th>Income</th>
+                <th>Co-applicant Income</th>
+                <th>Loan Amount</th>
+                <th>Self Employed</th>
+                <th>Property Area</th>
+                <th>Credit History</th>
+
+                @* <th>Actions</th> *@
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var loan in Model)
+            {
+                {
+                    var creditHistory = loan.Dataset.CreditHistory == 0 ? "Cleared" : "In Debt";
+                    <tr>
+                        <td>@loan.Id</td>
+                    <td>@loan.Dataset.Gender</td>
+                    <td>@loan.Dataset.Married</td>
+                    <td>₹@loan.Dataset.ApplicantIncome</td>
+                    <td>₹@loan.Dataset.CoapplicantIncome</td>
+                    <td>₹@loan.Dataset.LoanAmount</td>
+                    <td>@loan.Dataset.SelfEmployed</td>
+                    <td>@loan.Dataset.PropertyArea</td>
+                    <td>@creditHistory</td>
+                    @* <td>
+                        <a href="@Url.Action("GetLoanPredictionByLoanApplicationId", "LoanApplication", new { loanApplicationId = loan.Id })"
+                           class="btn btn-primary btn-sm">
+                            View Prediction
+                        </a>
+                    </td> *@
+                </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>

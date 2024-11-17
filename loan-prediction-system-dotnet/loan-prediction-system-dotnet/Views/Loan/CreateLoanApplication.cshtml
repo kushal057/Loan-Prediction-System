@@ -1,0 +1,103 @@
+﻿@model LoanApplicationModel
+
+@{
+    ViewData["Title"] = "Loan Application Form";
+}
+
+<div class="container my-5">
+    <h2 class="text-center mb-4">Loan Application Form</h2>
+    <form asp-action="Submit" method="post">
+        @Html.HiddenFor(m => m.Id)
+        <div class="row g-3">
+            <!-- Gender -->
+            <div class="col-md-6">
+                <label for="Dataset.Gender" class="form-label">Gender</label>
+                <select asp-for="Dataset.Gender" class="form-select">
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                </select>
+            </div>
+
+            <!-- Marital Status -->
+            <div class="col-md-6">
+                <label for="Dataset.MaritalStatus" class="form-label">Marital Status</label>
+                <select asp-for="Dataset.Married" class="form-select">
+                    <option value="No">No</option>
+                    <option value="Yes">Yes</option>
+                </select>
+            </div>
+
+            <!-- Number of Dependents -->
+            <div class="col-md-6">
+                <label for="Dataset.Dependents" class="form-label">Number of Dependents</label>
+                <input asp-for="Dataset.Dependents" type="number" class="form-control" min="0" max="4" />
+            </div>
+
+            <!-- Education -->
+            <div class="col-md-6">
+                <label for="Dataset.Education" class="form-label">Education</label>
+                <select asp-for="Dataset.Education" class="form-select">
+                    <option value="Not Graduate">Not Graduate</option>
+                    <option value="Graduate">Graduate</option>
+                </select>
+            </div>
+
+            <!-- Self Employed -->
+            <div class="col-md-6">
+                <label for="Dataset.SelfEmployed" class="form-label">Self Employed</label>
+                <select asp-for="Dataset.SelfEmployed" class="form-select">
+                    <option value="No">No</option>
+                    <option value="Yes">Yes</option>
+                </select>
+            </div>
+
+            <!-- Applicant Income -->
+            <div class="col-md-6">
+                <label for="Dataset.ApplicantIncome" class="form-label">Applicant Income (INR)</label>
+                <input asp-for="Dataset.ApplicantIncome" type="number" class="form-control" min="0" />
+            </div>
+
+            <!-- Co-applicant Income -->
+            <div class="col-md-6">
+                <label for="Dataset.CoapplicantIncome" class="form-label">Co-applicant Income (INR)</label>
+                <input asp-for="Dataset.CoapplicantIncome" type="number" class="form-control" min="0" />
+            </div>
+
+            <!-- Loan Amount -->
+            <div class="col-md-6">
+                <label for="Dataset.LoanAmount" class="form-label">Loan Amount (in thousands)</label>
+                <input asp-for="Dataset.LoanAmount" type="number" class="form-control" min="0" />
+            </div>
+
+            <!-- Loan Amount Term -->
+            <div class="col-md-6">
+                <label for="Dataset.LoanAmountTerm" class="form-label">Loan Amount Term (in months)</label>
+                <input asp-for="Dataset.LoanAmountTerm" type="number" class="form-control" min="0" />
+            </div>
+
+            <!-- Credit History -->
+            <div class="col-md-6">
+                <label for="Dataset.CreditHistory" class="form-label">Credit History</label>
+                <select asp-for="Dataset.CreditHistory" class="form-select">
+                    <option value="0">No History</option>
+                    <option value="1">Having History</option>
+                </select>
+            </div>
+
+            <!-- Property Area -->
+            <div class="col-md-6">
+                <label for="Dataset.PropertyArea" class="form-label">Property Area</label>
+                <select asp-for="Dataset.PropertyArea" class="form-select">
+                    <option value="Rural">Rural</option>
+                    <option value="Semiurban">Semiurban</option>
+                    <option value="Urban">Urban</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="mt-4 text-center">
+            <button type="submit" class="btn btn-success">Submit Application</button>
+        </div>
+    </form>
+</div>
+

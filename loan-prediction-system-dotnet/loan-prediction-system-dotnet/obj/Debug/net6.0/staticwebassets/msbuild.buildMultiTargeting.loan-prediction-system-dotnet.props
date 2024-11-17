@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\loan-prediction-system-dotnet.props" />
+</Project>

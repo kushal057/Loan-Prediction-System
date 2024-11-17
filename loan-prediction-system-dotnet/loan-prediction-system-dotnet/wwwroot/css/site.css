@@ -1,0 +1,36 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+  background-color: lightblue;
+}
+
+/* Hide the spinner controls (both increment and decrement) in number input */
+.no-spinner::-webkit-outer-spin-button,
+.no-spinner::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.no-spinner[type="number"] {
+    -moz-appearance: textfield; /* Firefox */
+    appearance: textfield; /* Other browsers */
+}
+
+a {
+    text-decoration: none;
+    color: purple;
+}

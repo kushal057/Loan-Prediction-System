@@ -1,0 +1,23 @@
+﻿@model LoanPredictionModel
+
+@{
+    ViewBag.Title = "LoanStatus";
+}
+
+<div class="container my-5">
+    <h2 class="text-center mb-4">Loan Prediction Results</h2>
+    <div class="alert alert-info text-center">
+        <strong>Prediction: @Model.LoanStatus</strong>
+        <p>@Model.Message</p>
+    </div>
+
+    @foreach (var chart in Model.Charts)
+    {
+        <div class="row justify-content-center mb-4">
+            <div class="col-md-12 text-center">
+                <img src="data:image/png;base64,@chart.Value" alt="@chart.Key" class="img-fluid" />
+                <h4>@chart.Key</h4>
+            </div>
+        </div>
+    }
+</div>
